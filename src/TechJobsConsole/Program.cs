@@ -5,6 +5,8 @@ namespace TechJobsConsole
 {
     class Program
     {
+     
+
         static void Main(string[] args)
         {
             // Create two Dictionary vars to hold info for menu and data
@@ -118,7 +120,22 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            foreach (Dictionary<string, string> job in someJobs) 
+            
+                {
+                Console.WriteLine("*****");
+                    foreach (KeyValuePair<string, string >info in job)
+                    { 
+                        Console.WriteLine( $"{ info.Key}: {info.Value}" );
+                    }
+                    Console.WriteLine("*****");
+                }
+            Console.WriteLine("no results");
+        }
+
+        private static void LoadData()
+        {
+            throw new NotImplementedException();
         }
     }
 }
