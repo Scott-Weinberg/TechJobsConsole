@@ -5,7 +5,7 @@ namespace TechJobsConsole
 {
     class Program
     {
-     
+        
 
         static void Main(string[] args)
         {
@@ -65,7 +65,10 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+
+                        searchResults = JobData.FindByValue(searchTerm.ToLower());
+                        PrintJobs(searchResults);
+                        //Console.WriteLine("Search all fields not yet implemented.");
                     }
                     else
                     {
@@ -75,7 +78,7 @@ namespace TechJobsConsole
                 }
             }
         }
-
+        
         /*
          * Returns the key of the selected item from the choices Dictionary
          */
@@ -139,10 +142,6 @@ namespace TechJobsConsole
                     Console.WriteLine("No Results");
                 }
         }
-
-        private static void LoadData()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
