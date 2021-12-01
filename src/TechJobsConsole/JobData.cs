@@ -15,7 +15,27 @@ namespace TechJobsConsole
             LoadData();
             return AllJobs;
         }
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            LoadData();
+            List<Dictionary<string, string>> listings = new List<Dictionary<string,string>>();
+            //FindByColumnAndValue will return list<dictionary<string, string>>
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                foreach (string key in row.Keys)
+                {
+                    
+                    string aValue = row[key];
 
+                    if (aValue.ToLower().Contains(value))
+                    {
+                        listings.Add(row);
+                    }
+                }
+            }
+            return listings;
+
+        }
         /*
          * Returns a list of all values contained in a given column,
          * without duplicates. 
@@ -49,7 +69,7 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value))
                 {
                     jobs.Add(row);
                 }
@@ -101,7 +121,7 @@ namespace TechJobsConsole
 
             IsDataLoaded = true;
         }
-
+        
         /*
          * Parse a single line of a CSV file into a string array
          */

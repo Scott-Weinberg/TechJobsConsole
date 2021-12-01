@@ -69,7 +69,7 @@ namespace TechJobsConsole
                     }
                     else
                     {
-                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm.ToLower());
                         PrintJobs(searchResults);
                     }
                 }
@@ -120,17 +120,24 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            foreach (Dictionary<string, string> job in someJobs) 
-            
+            if (someJobs.Count != 0)
+            foreach (Dictionary<string, string> job in someJobs)
+            {
+                
                 {
-                Console.WriteLine("*****");
-                    foreach (KeyValuePair<string, string >info in job)
-                    { 
-                        Console.WriteLine( $"{ info.Key}: {info.Value}" );
+
+                    Console.WriteLine("*****");
+                    foreach (KeyValuePair<string, string> info in job)
+                    {
+                        Console.WriteLine($"{ info.Key}: {info.Value}");
                     }
                     Console.WriteLine("*****");
                 }
-            Console.WriteLine("no results");
+                
+            }else
+                {
+                    Console.WriteLine("No Results");
+                }
         }
 
         private static void LoadData()
